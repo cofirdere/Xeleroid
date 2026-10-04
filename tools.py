@@ -7,6 +7,16 @@ from datetime import datetime
 #to check for third party apps, that users use
 THIRD_PARTY_APPS= {
     "chrome":"chrome",
+    "duckduckgo":"https://www.duckduckgo.com",        #opens browser
+    "duck browser":"https://www.duckduckgo.com",      #opens browser
+    "chatgpt":"https://www.chatgpt.com",              #opens browser
+    "cgpt":"https://www.chatgpt.com",                 #opens browser
+    "gemini":"https://gemini.google.com",             #opens browser
+    "google gemini":"https://gemini.google.com",      #opens browser
+    "gmni":"https://gemini.google.com",               #opens browser
+    "claude":"https://www.claude.com",                #opens browser
+    "clde":"https://www.claude.com",                  #opens browser
+    "claud":"https://www.claude.com",                 #opens browser
     "discord":"discord",
     "spotify":"spotify",
     "instagram":"https://instagram.com",  #opens browser
@@ -30,6 +40,12 @@ def getStatus()-> dict:        #status
         "os":platform.system(),
     }
 
+def webSearch(query: str)-> dict:
+    import urllib.parse
+    encodedQuery=urllib.parse.quote(query)
+    webbrowser.open(f"https://www.google.com/search?q={encodedQuery}")
+    return {"success": True, "message": f"searching for {query}"}
+    
 def getTime()->dict:        #time
     timeNow=datetime.now()
     formatted=timeNow.strftime("%I: %M %p and %A %b %d")
