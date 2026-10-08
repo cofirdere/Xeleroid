@@ -27,9 +27,14 @@ INTENTS= {
      "target_formatter": lambda match: f"~/{match.group(1).capitalize()}",
  },
  "web_search": {
-     "patterns":[r"\b(?:search|look \s+up|google|google \s+the|google \s+that|find|find \s+the|find \s+that)\s+(?:for\s+)?(.+)\b"],
+     "patterns":[r"\b(?:search|look\s+up|google|google\s+the|google\s+that|find|find\s+the|find\s+that)\s+(?:for\s+)?(.+)\b"],
      "has_target":True,
      "target_formatter": lambda match: match.group(1).strip(),
+ },
+ "wiki": {
+      "patterns":[r"\b(?:lookup|look\s+up|wiki|hey\s+wiki|hey\s+wikipedia|search\s+on\s+wiki)\s+(?:for\s+)?(.+)\b"],
+      "has_target":True,
+      "target_formatter": lambda match: match.group(1).strip(),
  },
  "open_app": {
      "patterns":[r"\b(?:open|opn|opnn|start|strt|start \s+my|staart|run|rn|rin|launch|laucbh|leuanch|launcb|lainch|start \s+the)\s+(?:the\s+)?(?!downloads|desktop|documents|home)([a-zA-Z0-9_\-\s!&;@#*\]\[]+)\b"],
