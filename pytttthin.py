@@ -3,17 +3,18 @@ import random
 from brain import handle_iterate
 import tools as tl
 #ansii code schemes
-YELLOW="\033[33m"
+COLOR="\033[38;5;166m"
 RESET = "\033[0m"
-logoBANNER=f"""{YELLOW}
-       __
-  __  / /_____ _   ___________  
-  \ \/ / ___ | |   | ____|  _ \ 
-   \  /| ___ | |   |  __ | |_) |
-   /  \| \___| |___|  ___|  _ < 
-  /_/\_\_____| ____|_____|_| \_\
+logoBANNER=f""" {COLOR}
+      ________________________________________________________         
+     / / ______ | |      ___________________________________  | 
+ \ \/ / |  ____/| |     |  ____|  __ \  / __ \ |_   _||  __ \ |
+  \  /  | |__   | |     | |__  | |__) || |  | |  | |  | |  | ||
+  /  \  |  __/  | |     |  __/ |  _  / | |  | |  | |  | |  | ||
+ / /\ \ | |____ | |____ | |____| | \ \ | |__| | _| |_ | |__| ||
+/ /  \ \|______\|______||  ____|_|_|  \_\____/ |_____||______/|
+      \=======================================================|                                                      
 
- 
  {RESET}"""
 print(logoBANNER)
 
@@ -55,6 +56,12 @@ def handleProcess(UserInput: str):
             case "web_search":
                  searchResult=tl.webSearch(targets)
                  print(searchResult["message"])
+            case "wiki":
+                 wikiResult=tl.wikiAns(targets)
+                 if wikiResult["success"]:
+                      print(wikiResult["answer"])
+                 else:
+                      print(wikiResult["message"])
             case _:
                  print("sorry, I didn't understand it")                                       
 if __name__=="__main__":        #made so that, if this file is imported in other file, it dont automatically run. it's an graceful exit guard.
